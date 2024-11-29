@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+
+{% block contenido %}
+    <header>
+        <h1 class="text-center py-3">Agregar productos</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2 class="text-center py-3">Django form - ModelForm</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form}}
+
+                        <div class="py-3">
+                            <input type="submit" value="Crear producto" class="btn btn-primary">
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+            </div>
+
+        </section>
+    </main>
+{% endblock contenido %}
