@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+
+{% block contenido %}
+
+<header>
+    <h1 class="text-center py-3">Eliminación de comentario: {{comentario.id}} </h1>
+</header>
+
+<main class="container">
+    <section>
+        <h3>Datos del comentario:</h3>
+        <p>Autor: {{comentario.autor}}</p>
+        <p>Comentario: {{comentario.contenido}}</p>
+        <p>Fecha del comentario: {{comentario.fecha}}</p>
+        <p>Post relacionado: {{comentario.post.titulo}}</p>
+        <p>Autor del post: {{comentario.post.autor.username}}</p>
+    </section>
+
+    <section>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Presione si desea eliminar." class="btn btn-danger">
+        </form>
+    </section>
+</main>
+
+{% endblock contenido %}

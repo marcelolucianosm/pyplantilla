@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+
+
+{% block contenido %}
+
+<header>
+    <h1 class="text-center py-3">Últimos posts de la comunidad</h1>
+</header>
+
+<main class="container">
+    <section id="posts">
+        <h2>entradas del blog:</h2>
+            <ul>
+                {% for post in posts %}
+                    <li>
+                        {{post.autor.username}}, ID post: ({{post.id}}): {{post.titulo}}
+                        <a href="{% url "detalle_post" post.id %}">Ver detalle</a>
+                    </li>
+                {% endfor %}
+            </ul>
+    </section>
+</main>
+
+{% endblock contenido %}

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+
+
+{% block contenido %}
+
+<header>
+    <h1 class="text-center py-3">Crea un Post.</h1>
+</header>
+
+<main class="container">
+    <section>
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <div>
+                <input type="submit" class="btn btn-primary mt-3" value="Crear post">
+            </div>
+
+        </form>
+    </section>
+
+</main>
+
+{% endblock contenido %}

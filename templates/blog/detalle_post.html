@@ -1,0 +1,98 @@
+{% extends "layouts/base.html" %}
+
+{% block contenido %}
+
+<div class="position-fixed" style="left: 51px; top: 73px;">
+     <a href="/blog/" class="btn btn-primary" style="left: 100px;">Volver a posts....</a>
+</div>
+
+<header>
+    <h1 class="text-center py-3">Post id: {{post.id}}</h1>
+</header>
+
+<main class="container">
+    <section id="detalle_post">
+
+      {% include 'partials/card_post.html ' with post=post medida=75%}
+
+    </section>
+
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-lg-4">
+                 <form method="post" action="{% url "agregar_comentario" post.id %}">
+                    {% csrf_token %}
+                    <div>
+                        <div>
+                            <label for="contenido" class="form-label">Deja tu comentario...</label>
+                            <textarea name="contenido" id="contenido" rows="4" class="form-control" maxlength="500" required></textarea>
+                            <small>Máximo 500 caracteres.</small>
+                        </div>
+                        <div class="py-3">
+                          <input type="submit" value="Publicar" class="btn btn-primary">  
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="comentarios_post">
+        <h3>últimos comentarios...</h3>
+
+        {% for comentario in  comentarios %}
+        <div class="card mb-3 w-50 mx-auto">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://picsum.photos/id/237/150/150" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  {% if user == comentario.autor%}
+                  <div class="d-flex justify-content-end">
+                    <a href="" class="mx-2"
+                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
+                    data-bs-custom-class="custom-actualizar"
+                    >
+                      <i class="fa-solid fa-pen-to-square text-warning"></i>
+                    </a>
+                    <a href="{% url "eliminar_comentario" comentario.id %}" class="mx-2"
+                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
+                    data-bs-custom-class="custom-eliminar"
+                    >
+                      <i class="fa-regular fa-trash-can text-danger"></i>
+                    </a>
+                  </div>
+                  {% endif %}
+
+                  <h5 class="card-title">Autor: {{comentario.autor.username}}</h5>
+                  <p class="card-text">{{comentario.contenido}}</p>
+                  <p class="card-text">Fecha comentario:{{comentario.fecha|date:"D d M Y"}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+    </section>
+
+</main>
+
+<style>
+  .custom-actualizar {
+    --bs-tooltip-bg: var(--bs-warning);
+    --bs-tooltip-color: var(--bs-white);
+  }
+
+  .custom-eliminar {
+    --bs-tooltip-bg: var(--bs-danger);
+    --bs-tooltip-color: var(--bs-white);
+  }
+</style>
+
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+{% endblock contenido %}

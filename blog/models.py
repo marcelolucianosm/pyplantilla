@@ -39,7 +39,7 @@ class Comentario(models.Model):
     def __str__(self):
         return self.contenido
     
-    class meta:
+    class Meta:
         managed = True
         db_table ='comentarios'
         
