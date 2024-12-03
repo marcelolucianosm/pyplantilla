@@ -1,6 +1,9 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 from django.db import models
 from django.contrib.auth.models import User
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 class Categoria(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50,null=False,blank=False,unique=True)
@@ -14,6 +17,8 @@ class Categoria(models.Model):
         managed = True
         db_table = 'categorias'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=50,null=False,blank=False)
@@ -29,6 +34,8 @@ class Post(models.Model):
         managed = True
         db_table = 'posts'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 class Comentario(models.Model):
     id = models.AutoField(primary_key=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, blank=False,null=False)
@@ -43,5 +50,5 @@ class Comentario(models.Model):
         managed = True
         db_table ='comentarios'
         
-    
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""   
     

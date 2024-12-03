@@ -1,3 +1,4 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 from django.shortcuts import render
 from .models import Post, Categoria, Comentario
 from django.contrib.auth.decorators import login_required, permission_required
@@ -6,12 +7,18 @@ from django.shortcuts import redirect
 
 from .forms import PostFormCreate
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@login_required(login_url="home")
 def posts(request):
     contexto = {}
     posts = Post.objects.all().order_by("id")
     contexto['posts'] = posts
     return render(request,'blog/posts.html' ,contexto)
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@login_required(login_url="home")
 def detalle_post(request,post_id):
     contexto = {}
     
@@ -27,7 +34,9 @@ def detalle_post(request,post_id):
     contexto["post"] = post
     contexto["comentarios"] = comentarios
     return render(request,'blog/detalle_post.html',contexto)
-        
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@login_required(login_url="home")       
 def agregar_comentario(request, post_id):
     if request.method == "POST":
         contenido = request.POST.get("contenido")
@@ -47,8 +56,9 @@ def agregar_comentario(request, post_id):
     else:
         messages.error(request, "Acción / método no permitido")
         return redirect('posts')
-    
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""   
 @login_required(login_url="login")
 @permission_required("blog.delete_comentario", login_url="home")
 def eliminar_comentario(request, comentario_id):
@@ -72,8 +82,10 @@ def eliminar_comentario(request, comentario_id):
         # BLOQUE GET
         contexto["comentario"] = comentario 
         return render(request, 'blog/eliminar_comentario.html', contexto)
-    
-@login_required(login_url="login")
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""   
+@login_required(login_url="home")
 @permission_required("blog.add_post", login_url="home")
 def crear_post(request):
     contexto = {}
@@ -100,3 +112,5 @@ def crear_post(request):
         else:
             messages.error(request, "Algo ha fallado, revise bien los datos ingresados.")
             return render(request, 'blog/crear_post.html', contexto)
+        
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

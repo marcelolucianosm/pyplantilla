@@ -1,8 +1,12 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 from django.forms import ModelForm
 from django import forms
-
 from .models import Post
 
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 class PostFormCreate(ModelForm):
     class Meta:
         model = Post
@@ -13,3 +17,4 @@ class PostFormCreate(ModelForm):
             "contenido" : forms.Textarea(attrs={ "class" : 'form-control', "rows" : 5}),
             "categoria" : forms.Select(attrs={ "class" : 'form-control'}),
         }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
