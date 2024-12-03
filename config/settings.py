@@ -71,6 +71,17 @@ DATABASES = {
     }
 }
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',  
+#        'NAME': 'db_final_orm',        
+#        'USER': 'userdjango',           
+#        'PASSWORD': 'userdjango',     
+#        'HOST': 'localhost',                  
+#        'PORT': '5432',                       
+#    }
+#}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -109,7 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-  #  "/var/www/static/",
+#  "/var/www/static/",
 ]
 
 # Default primary key field type
