@@ -1,0 +1,9 @@
+<div class="card mb-3 mx-auto {% if medida %} w-{{medida}} {% else %}w-75{% endif %}">
+    <div class="card-body">
+      <h5 class="card-title">{{post.titulo}}</h5>
+      <p class="card-text">{{post.contenido}}</p>
+      <p class="card-text">Fecha publicación: {{post.fecha_creacion}}</p>
+      <p class="card-text">Categoría: {{post.categoria.nombre}}</p>
+      <p class="card-text text-end fw-bold">Autor: {{post.autor.username}}</p>
+    </div>
+</div>

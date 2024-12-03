@@ -20,7 +20,7 @@
     <section>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-6 col-lg-4">
-                 <form method="post" action="{% url "agregar_comentario" post.id %}">
+                <form method="post" action="{% url "agregar_comentario" post.id %}">
                     {% csrf_token %}
                     <div>
                         <div>
@@ -48,23 +48,18 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  {% if user == comentario.autor%}
                   <div class="d-flex justify-content-end">
                     <a href="" class="mx-2"
                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
-                    data-bs-custom-class="custom-actualizar"
-                    >
+                    data-bs-custom-class="custom-actualizar">
                       <i class="fa-solid fa-pen-to-square text-warning"></i>
                     </a>
                     <a href="{% url "eliminar_comentario" comentario.id %}" class="mx-2"
                     data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
-                    data-bs-custom-class="custom-eliminar"
-                    >
+                    data-bs-custom-class="custom-eliminar">
                       <i class="fa-regular fa-trash-can text-danger"></i>
                     </a>
                   </div>
-                  {% endif %}
-
                   <h5 class="card-title">Autor: {{comentario.autor.username}}</h5>
                   <p class="card-text">{{comentario.contenido}}</p>
                   <p class="card-text">Fecha comentario:{{comentario.fecha|date:"D d M Y"}}</p>

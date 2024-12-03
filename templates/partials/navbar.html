@@ -18,28 +18,15 @@
               Gestión 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Listado</a></li>
-
                 <li><a class="dropdown-item" href="{% url "posts" %}">Posts</a></li>
+                <li><a class="dropdown-item" href="{% url "crear_post" %}">Agregar Post</a></li>
                 <li><a class="dropdown-item" href="">add producto modelform</a></li>
       
             </ul>
           </li>
     
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Productos
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Listado</a></li>
 
-                    <li><a class="dropdown-item" href="">Productos VIP</a></li>
-
-                <li><a class="dropdown-item" href="">Productos destacados</a></li>
-
-            </ul>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="{% url "usuarios_view" %}">Usuarios</a>
