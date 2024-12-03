@@ -8,19 +8,31 @@
 
 <main class="container">
     <section>
-        <h3>Datos del comentario:</h3>
-        <p>Autor: {{comentario.autor}}</p>
-        <p>Comentario: {{comentario.contenido}}</p>
-        <p>Fecha del comentario: {{comentario.fecha}}</p>
-        <p>Post relacionado: {{comentario.post.titulo}}</p>
-        <p>Autor del post: {{comentario.post.autor.username}}</p>
+        <table class="table table-bordered border-success">
+            <tr><td>
+                <h3>Datos del comentario:</h3>
+                <table class="table table-bordered border-success">
+                    <tr><td>
+                        <p>Autor: {{comentario.autor}}</p>
+                        <p>Comentario: {{comentario.contenido}}</p>
+                        <p>Fecha del comentario: {{comentario.fecha}}</p>
+                        <p>Post relacionado: {{comentario.post.titulo}}</p>
+                        <p>Autor del post: {{comentario.post.autor.username}}</p>
+                    </td></tr>
+                </table>
+            </td></tr>
+        </table>
     </section>
 
     <section>
-        <form method="post">
-            {% csrf_token %}
-            <input type="submit" value="Presione si desea eliminar." class="btn btn-danger">
-        </form>
+        <table class="table table-bordered border-success">
+            <tr><td>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Presione si desea eliminar." class="btn btn-danger">
+                </form>
+            </td></tr>
+        </table>
     </section>
 </main>
 

@@ -23,14 +23,21 @@
                 <form method="post" action="{% url "agregar_comentario" post.id %}">
                     {% csrf_token %}
                     <div>
-                        <div>
-                            <label for="contenido" class="form-label">Deja tu comentario...</label>
-                            <textarea name="contenido" id="contenido" rows="4" class="form-control" maxlength="500" required></textarea>
-                            <small>Máximo 500 caracteres.</small>
-                        </div>
-                        <div class="py-3">
-                          <input type="submit" value="Publicar" class="btn btn-primary">  
-                        </div>
+                        <table class="table table-bordered border-success">
+                        <tr><td>
+                          <div>
+                              <label for="contenido" class="form-label">Deja tu comentario...</label>
+                              <textarea name="contenido" id="contenido" rows="4" class="form-control" maxlength="500" required></textarea>
+                              <small>Máximo 500 caracteres.</small>
+                          </div>
+                        </td>
+                        </tr>
+                        <tr><td>
+                          <div class="py-3">
+                            <input type="submit" value="Publicar" class="btn btn-primary">  
+                          </div>
+                        </td></tr>
+                        </table>
                     </div>
                 </form>
             </div>
@@ -41,32 +48,36 @@
         <h3>últimos comentarios...</h3>
 
         {% for comentario in  comentarios %}
-        <div class="card mb-3 w-50 mx-auto">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="https://picsum.photos/id/237/150/150" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <div class="d-flex justify-content-end">
-                    <a href="" class="mx-2"
-                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
-                    data-bs-custom-class="custom-actualizar">
-                      <i class="fa-solid fa-pen-to-square text-warning"></i>
-                    </a>
-                    <a href="{% url "eliminar_comentario" comentario.id %}" class="mx-2"
-                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
-                    data-bs-custom-class="custom-eliminar">
-                      <i class="fa-regular fa-trash-can text-danger"></i>
-                    </a>
+        <table class="table table-bordered border-success">
+          <tr><td>
+            <div class="card mb-3 w-50 mx-auto">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/237/150/150" class="img-fluid rounded-start" alt="...">
                   </div>
-                  <h5 class="card-title">Autor: {{comentario.autor.username}}</h5>
-                  <p class="card-text">{{comentario.contenido}}</p>
-                  <p class="card-text">Fecha comentario:{{comentario.fecha|date:"D d M Y"}}</p>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-end">
+                        <a href="" class="mx-2"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
+                        data-bs-custom-class="custom-actualizar">
+                          <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                        <a href="{% url "eliminar_comentario" comentario.id %}" class="mx-2"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
+                        data-bs-custom-class="custom-eliminar">
+                          <i class="fa-regular fa-trash-can text-danger"></i>
+                        </a>
+                      </div>
+                      <h5 class="card-title">Autor: {{comentario.autor.username}}</h5>
+                      <p class="card-text">{{comentario.contenido}}</p>
+                      <p class="card-text">Fecha comentario:{{comentario.fecha|date:"D d M Y"}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </td></tr>
+          </table>
         {% endfor %}
 
     </section>

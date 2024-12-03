@@ -9,14 +9,22 @@
 
 <main class="container">
     <section>
-        <form method="post">
-            {% csrf_token %}
-            {{form}}
-            <div>
-                <input type="submit" class="btn btn-primary mt-3" value="Crear post">
-            </div>
+        <table class="table table-bordered border-success">
+            <tr><td>
+                <form method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <table class="table table-bordered border-success">
+                    <tr><td>
+                        <div>
+                            <input type="submit" class="btn btn-primary mt-3" value="Crear post">
+                        </div>
+                    </td></tr>
+                    </table>
 
-        </form>
+                </form>
+            </td></tr>
+        </table>
     </section>
 
 </main>

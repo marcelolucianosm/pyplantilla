@@ -10,14 +10,14 @@
 <main class="container">
     <section id="posts">
         <h2>entradas del blog:</h2>
-            <ul>
+        <table class="table table-bordered border-success">
                 {% for post in posts %}
-                    <li>
-                        {{post.autor.username}}, ID post: ({{post.id}}): {{post.titulo}}
-                        <a href="{% url "detalle_post" post.id %}">Ver detalle</a>
-                    </li>
+                <tr>
+                    <td>{{post.autor.username}}, ID post: ({{post.id}}): {{post.titulo}}  </td>
+                    <td><a href="{% url "detalle_post" post.id %}">Ver detalle</a>        </td>
+                </tr>
                 {% endfor %}
-            </ul>
+        </table>
     </section>
 </main>
 
